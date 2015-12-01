@@ -1,5 +1,6 @@
-  <?php
-require __DIR__ . '/vendor/autoload.php';
+<?php
+session_start();
+require_once __DIR__ . '/vendor/autoload.php';
 
 define('APPLICATION_NAME', 'Google Calendar API PHP Quickstart');
 define('CREDENTIALS_PATH', '~/.credentials/calendar-php-quickstart.json');
@@ -17,41 +18,41 @@ if (php_sapi_name() != 'cli') {
  * @return Google_Client the authorized client object
  */
 function getClient() {
-  $client = new Google_Client();
-  $client->setApplicationName(APPLICATION_NAME);
-  $client->setScopes(SCOPES);
-  $client->setAuthConfigFile(CLIENT_SECRET_PATH);
-  $client->setAccessType('offline');
+    $client = new Google_Client();
+    $client->setApplicationName(APPLICATION_NAME);
+    $client->setScopes(SCOPES);
+    $client->setAuthConfigFile(CLIENT_SECRET_PATH);
+    $client->setAccessType('offline');
 
-  // Load previously authorized credentials from a file.
-  $credentialsPath = expandHomeDirectory(CREDENTIALS_PATH);
-  if (file_exists($credentialsPath)) {
-    $accessToken = file_get_contents($credentialsPath);
-  } else {
-    // Request authorization from the user.
-    $authUrl = $client->createAuthUrl();
-    printf("Open the following link in your browser:\n%s\n", $authUrl);
-    print 'Enter verification code: ';
-    $authCode = trim(fgets(STDIN));
+    // Load previously authorized credentials from a file.
+    $credentialsPath = expandHomeDirectory(CREDENTIALS_PATH);
+    if (file_exists($credentialsPath)) {
+        $accessToken = file_get_contents($credentialsPath);
+    } else {
+        // Request authorization from the user.
+        $authUrl = $client->createAuthUrl();
+        printf("Open the following link in your browser:\n%s\n", $authUrl);
+        print 'Enter verification code: ';
+        $authCode = trim(fgets(STDIN));
 
-    // Exchange authorization code for an access token.
-    $accessToken = $client->authenticate($authCode);
+        // Exchange authorization code for an access token.
+        $accessToken = $client->authenticate($authCode);
 
-    // Store the credentials to disk.
-    if(!file_exists(dirname($credentialsPath))) {
-      mkdir(dirname($credentialsPath), 0700, true);
+        // Store the credentials to disk.
+        if(!file_exists(dirname($credentialsPath))) {
+            mkdir(dirname($credentialsPath), 0700, true);
+        }
+        file_put_contents($credentialsPath, $accessToken);
+        printf("Credentials saved to %s\n", $credentialsPath);
     }
-    file_put_contents($credentialsPath, $accessToken);
-    printf("Credentials saved to %s\n", $credentialsPath);
-  }
-  $client->setAccessToken($accessToken);
+    $client->setAccessToken($accessToken);
 
-  // Refresh the token if it's expired.
-  if ($client->isAccessTokenExpired()) {
-    $client->refreshToken($client->getRefreshToken());
-    file_put_contents($credentialsPath, $client->getAccessToken());
-  }
-  return $client;
+    // Refresh the token if it's expired.
+    if ($client->isAccessTokenExpired()) {
+        $client->refreshToken($client->getRefreshToken());
+        file_put_contents($credentialsPath, $client->getAccessToken());
+    }
+    return $client;
 }
 
 /**
@@ -126,12 +127,6 @@ $event = new Google_Service_Calendar_Event(array(
   ),
 ));
 $calendarId = 'afaacontactus@gmail.com';
-// Get the API client and construct the service object.
-$client = getClient();
-$service = new Google_Service_Calendar_Event($client);
-echo "services set up";
-$event = $service->events->insert($calendarId, $event);
-var_dump($event);
-echo "inserted";
-printf('Event created: %s\n', $event->htmlLink);
+$eventGenerated = $service->events->insert($calendarId, $event);
+printf('Event created: %s\n', $eventGenerated->htmlLink);
 ?>
