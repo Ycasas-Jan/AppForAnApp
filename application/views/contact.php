@@ -29,7 +29,7 @@
 
 <!-- Header -->
 <header id="header" class="skel-layers-fixed">
-    <h1><a href="index.php">AppForAnApp</a></h1>
+    <h1><a href="./">AppForAnApp</a></h1>
     <a href="#nav">Menu</a>
 </header>
 
@@ -37,7 +37,6 @@
 <nav id="nav">
     <ul class="links">
         <li><a href="./">Home</a></li>
-        <li><a href="./elements">Elements</a></li>
         <li><a href="./demo">Demo</a></li>
         <li><a href="./contact">Contact Us</a></li>
     </ul>

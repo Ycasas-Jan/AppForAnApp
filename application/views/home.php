@@ -31,7 +31,6 @@
 <nav id="nav">
     <ul class="links">
         <li><a href="./">Home</a></li>
-        <li><a href="./elements">Elements</a></li>
         <li><a href="./demo">Demo</a></li>
         <li><a href="contact">Contact Us</a></li>
     </ul>

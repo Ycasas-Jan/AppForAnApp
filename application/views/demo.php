@@ -56,7 +56,7 @@
 -->
 <html>
 <head>
-    <title>AppForAnApp - Home</title>
+    <title>AppForAnApp - Demo</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!--[if lte IE 8]>
@@ -111,7 +111,6 @@
 <nav id="nav">
     <ul class="links">
         <li><a href="./">Home</a></li>
-        <li><a href="./elements">Elements</a></li>
         <li><a href="./demo">Demo</a></li>
         <li><a href="./contact">Contact Us</a></li>
     </ul>
