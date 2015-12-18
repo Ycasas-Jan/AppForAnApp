@@ -22,15 +22,29 @@ class Contact extends CI_Controller
         $name = $_POST['name'];
         $email = $_POST['email'];
         $message = $_POST['message'];
-        $this->load->library('email');
 
-        $this->email->from('ycasas.jan@gmail.com', 'Jan Ycasas');
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.gmail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'afaacontactus@gmail.com',
+            'smtp_pass' => 'freedom01',
+            'mailtype'  => 'html',
+            'charset'   => 'iso-8859-1'
+        );
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+
+        $this->email->from($email, 'Jan Ycasas');
         $this->email->to('afaacontactus@gmail.com');
 
         $this->email->subject('Contact Us Request');
-        $this->email->message("Name: $name\n Email: $email\n Message: $message");
+        $this->email->message("Name: $name\r\n Email: $email\r\n Message: $message");
 
         $this->email->send();
+        $data = array();
+        $data['message'] = "Message has been sent";
+        $this->load->view('blankPage', $data);
 
     }
 }

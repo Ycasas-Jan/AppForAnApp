@@ -1,53 +1,3 @@
-<!--
-<html>
-    <head>
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-    <style>
-        .calander{
-            height:100%;
-            width:100%;
-        }
-    </style>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <iframe class="calander" src="https://calendar.google.com/calendar/embed?src=flvg74jiidvsfvptdp3gs3qs88%40group.calendar.google.com&ctz=America/Vancouver"
-                        style="border: 0" frameborder="0" scrolling="no"></iframe>
-            </div>
-            <div class="col-md-6">
-                <form role="form" action="index.php/something" method="POST" required>
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" class="form-control" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Date</label>
-                        <input type="date" class="form-control" name="date" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Start Time</label>
-                        <input type="time" class="form-control" name="timeStart" required>
-                    </div>
-                    <div class="form-group">
-                        <label>End Time</label>
-                        <input type="time" class="form-control" name="timeEnd" required>
-                    </div>
-                    <button type="submit" name="submit" class="btn btn-default">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</html>
--->
-
 <!DOCTYPE HTML>
 <!--
 	Retrospect by TEMPLATED
@@ -60,13 +10,13 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!--[if lte IE 8]>
-    <script src="/finalProject/assets/js/ie/html5shiv.js"></script>
+    <script src="/assets/js/ie/html5shiv.js"></script>
     <![endif]-->
-    <link rel="stylesheet" href="/finalProject/assets/css/main.css"/>
+    <link rel="stylesheet" href="/assets/css/main.css"/>
     <!--[if lte IE 8]>
-    <link rel="stylesheet" href="/finalProject/assets/css/ie8.css"/><![endif]-->
+    <link rel="stylesheet" href="/assets/css/ie8.css"/><![endif]-->
     <!--[if lte IE 9]>
-    <link rel="stylesheet" href="/finalProject/assets/css/ie9.css"/>
+    <link rel="stylesheet" href="/assets/css/ie9.css"/>
     <![endif]-->
 </head>
 <style>
@@ -213,13 +163,13 @@
 </body>
 
 <!-- Scripts -->
-<script src="/finalProject/assets/js/jquery.min.js"></script>
-<script src="/finalProject/assets/js/skel.min.js"></script>
-<script src="/finalProject/assets/js/util.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/skel.min.js"></script>
+<script src="/assets/js/util.js"></script>
 <!--[if lte IE 8]>
-<script src="/finalProject/assets/js/ie/respond.min.js"></script>
+<script src="/assets/js/ie/respond.min.js"></script>
 <![endif]-->
-<script src="/finalProject/assets/js/main.js"></script>
+<script src="/assets/js/main.js"></script>
 
 </body>
 </html>

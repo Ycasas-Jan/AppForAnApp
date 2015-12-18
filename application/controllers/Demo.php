@@ -7,7 +7,6 @@ define('CLIENT_SECRET_PATH', __DIR__ . '/client_secret.json');
 define('SCOPES', implode(' ', array(
         Google_Service_Calendar::CALENDAR)
 ));
-
 class Demo extends CI_Controller
 {
     public function index()
@@ -50,14 +49,25 @@ class Demo extends CI_Controller
             }
         }
         if ($add) {
+
             $sql = "INSERT INTO Events (name,email,date,timeStart,timeEnd)
                       VALUES (\"$name\", \"$email\",\"$date\",$timeStartMin,$timeEndMin)";
             $this->db->query($sql);
             $this->masterFunction($name, $email, $date, $timeStart, $timeEnd);
 
-            $this->load->library('email');
+            $config = Array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://smtp.gmail.com',
+                'smtp_port' => 465,
+                'smtp_user' => 'afaacontactus@gmail.com',
+                'smtp_pass' => 'freedom01',
+                'mailtype'  => 'html',
+                'charset'   => 'iso-8859-1'
+            );
+            $this->load->library('email', $config);
+            $this->email->set_newline("\r\n");
 
-            $this->email->from($email, 'Jan Ycasas');
+            $this->email->from('afaacontactus@gmail.com', 'Jan Ycasas');
             $this->email->to($email);
 
             $this->email->subject('Appointment Confirm');
@@ -66,6 +76,7 @@ class Demo extends CI_Controller
             $this->email->send();
 
             echo $this->email->print_debugger();
+
         }
     }
 
@@ -105,7 +116,7 @@ class Demo extends CI_Controller
             $authUrl = $client->createAuthUrl();
             printf("Open the following link in your browser:\n%s\n", $authUrl);
             print 'Enter verification code: ';
-            $authCode = trim(fgets(STDIN));
+            $authCode = "4/INYEGVe4J-sT8IYjwSiW6YF93-7RxmMBjPRT91h5UFA";
 
             // Exchange authorization code for an access token.
             $accessToken = $client->authenticate($authCode);
